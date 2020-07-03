@@ -1,5 +1,6 @@
 package com.engineerskasa.oasis.Model;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
@@ -64,5 +65,16 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "User [id = "+id+"," +
+                " name = "+name+", " +
+                " email = "+email+", " +
+                " phone = "+phone+", " +
+                " password = "+password;
+
     }
 }
