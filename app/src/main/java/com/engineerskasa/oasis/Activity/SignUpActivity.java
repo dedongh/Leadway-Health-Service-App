@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -18,15 +19,17 @@ import com.engineerskasa.oasis.R;
 import com.engineerskasa.oasis.Utility.Tools;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.List;
+
+import io.reactivex.Completable;
+import io.reactivex.CompletableObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.annotations.NonNull;
-import io.reactivex.rxjava3.core.Completable;
-import io.reactivex.rxjava3.core.CompletableObserver;
-import io.reactivex.rxjava3.core.Scheduler;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.functions.Action;
-import io.reactivex.rxjava3.schedulers.Schedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
     private TextInputEditText txt_email, txt_password, txt_name, txt_phone;
@@ -46,6 +49,23 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         initDB();
 
         initializeView();
+
+        getAllUsers();
+    }
+
+    private void getAllUsers() {
+        compositeDisposable.add(
+                Common.userRepo.getAllUsers()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<User>>() {
+                    @Override
+                    public void accept(List<User> users) throws Exception {
+                        Log.e("UIDS", "accept: "+ users.size() );
+                        Log.e("UIDS", "user_info: "+ users );
+                    }
+                })
+        );
     }
 
     private void initDB() {
@@ -113,11 +133,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         user.setEmail(email);
         user.setPhone(phone);
         user.setName(name);
-        user.setPhone(phone);
+        user.setPassword(password);
 
         Completable.fromAction(new Action() {
             @Override
-            public void run() throws Throwable {
+            public void run() throws Exception {
                 Common.userRepo.registerUser(user);
             }
         })
@@ -132,6 +152,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onComplete() {
                 Toast.makeText(SignUpActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
             }
 
             @Override

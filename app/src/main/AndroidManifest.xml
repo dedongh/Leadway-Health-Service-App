@@ -4,11 +4,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/h1"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/h1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activity.LocateUsActivity" />
+        <activity android:name=".Activity.ManagePatientActivity" />
+        <activity android:name=".Activity.PatientRegistrationActivity" />
+        <activity android:name=".Activity.LabFormRequestActivity" />
         <activity android:name=".Activity.SignUpActivity" />
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.LoginActivity">
