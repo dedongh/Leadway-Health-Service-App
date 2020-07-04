@@ -39,6 +39,7 @@ dependencies {
 
     // room
     implementation 'android.arch.persistence.room:runtime:2.2.5'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
     annotationProcessor 'android.arch.persistence.room:compiler:2.2.5'
     implementation 'android.arch.persistence.room:rxjava2:2.2.5'
     //Retrofit
@@ -57,6 +58,9 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.7.2'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.7.2'
+
+    //Dexter
+    implementation 'com.karumi:dexter:6.2.0'
 
     // RxBinding
     implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'

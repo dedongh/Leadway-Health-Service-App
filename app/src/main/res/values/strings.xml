@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">LeadWay</string>
     <string name="intro_text">Welcome to <b><i>LeadWay Health Services</i></b> \n Manage patient records, request lab forms and locate us with ease</string>
+    <string name="title_activity_locate_us">Map</string>
 </resources>
