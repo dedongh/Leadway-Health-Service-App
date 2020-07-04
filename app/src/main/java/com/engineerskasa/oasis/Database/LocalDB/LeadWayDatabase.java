@@ -7,10 +7,11 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.engineerskasa.oasis.Model.Lab;
 import com.engineerskasa.oasis.Model.Patient;
 import com.engineerskasa.oasis.Model.User;
 
-@Database(entities = {User.class, Patient.class}, version = 1/*, exportSchema = false*/)
+@Database(entities = {User.class, Patient.class, Lab.class}, version = 1/*, exportSchema = false*/)
 public abstract class LeadWayDatabase extends RoomDatabase {
     public abstract UserDAO userDAO();
     public abstract PatientDAO patientDAO();
