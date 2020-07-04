@@ -15,7 +15,7 @@ public class PatientRepo implements IPatientDataSource{
 
     private static PatientRepo instance;
 
-    public static PatientRepo getPatientRepo(IPatientDataSource iPatientDataSource) {
+    public static PatientRepo getInstance(IPatientDataSource iPatientDataSource) {
         if (instance == null) {
             instance = new PatientRepo(iPatientDataSource);
         }
