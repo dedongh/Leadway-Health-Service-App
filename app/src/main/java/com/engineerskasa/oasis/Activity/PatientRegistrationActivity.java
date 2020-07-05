@@ -1,32 +1,35 @@
 package com.engineerskasa.oasis.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.engineerskasa.oasis.Common.Common;
 import com.engineerskasa.oasis.Database.DataSource.PatientRepo;
-import com.engineerskasa.oasis.Database.DataSource.UserRepo;
 import com.engineerskasa.oasis.Database.LocalDB.LeadWayDatabase;
 import com.engineerskasa.oasis.Database.LocalDB.PatientDataSource;
-import com.engineerskasa.oasis.Database.LocalDB.UserDataSource;
 import com.engineerskasa.oasis.Model.Patient;
 import com.engineerskasa.oasis.R;
 import com.engineerskasa.oasis.Utility.Tools;
 
+import java.util.List;
+
 import io.reactivex.Completable;
 import io.reactivex.CompletableObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public class PatientRegistrationActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,6 +39,8 @@ public class PatientRegistrationActivity extends AppCompatActivity implements Vi
     private String name, email, phone, occupation, address;
 
     private Button btn_save;
+
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,5 +156,20 @@ public class PatientRegistrationActivity extends AppCompatActivity implements Vi
                 Toast.makeText(PatientRegistrationActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void getAllPatients() {
+        compositeDisposable.add(
+                Common.patientRepo.getAllPatients()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Consumer<List<Patient>>() {
+                            @Override
+                            public void accept(List<Patient> users) throws Exception {
+                                Log.e("UIDS", "accept: "+ users.size() );
+                                Log.e("UIDS", "user_info: "+ users );
+                            }
+                        })
+        );
     }
 }

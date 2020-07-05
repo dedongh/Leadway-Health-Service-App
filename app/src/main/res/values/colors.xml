@@ -20,4 +20,11 @@
     <color name="grey_5">#f2f2f2</color>
     <color name="grey_80">#37474F</color>
     <color name="white">#fff</color>
+
+    <color name="light_blue_400">#29B6F6</color>
+
+    <color name="colorHeading">#606E82</color>
+    <color name="tagline">#cacfd7</color>
+
+    <color name="light_blue_800">#0277BD</color>
 </resources>

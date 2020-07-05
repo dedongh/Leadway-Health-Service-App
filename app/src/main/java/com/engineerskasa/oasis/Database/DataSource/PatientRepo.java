@@ -29,11 +29,11 @@ public class PatientRepo implements IPatientDataSource{
 
     @Override
     public void registerPatient(Patient... patients) {
-        iPatientDataSource.registerPatient();
+        iPatientDataSource.registerPatient(patients);
     }
 
     @Override
     public void deletePatients(Patient... patients) {
-        iPatientDataSource.deletePatients();
+        iPatientDataSource.deletePatients(patients);
     }
 }

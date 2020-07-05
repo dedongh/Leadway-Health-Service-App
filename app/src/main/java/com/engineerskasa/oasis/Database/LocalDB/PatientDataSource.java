@@ -29,11 +29,11 @@ public class PatientDataSource implements IPatientDataSource {
 
     @Override
     public void registerPatient(Patient... patients) {
-        patientDAO.registerPatient();
+        patientDAO.registerPatient(patients);
     }
 
     @Override
     public void deletePatients(Patient... patients) {
-        patientDAO.deletePatients();
+        patientDAO.deletePatients(patients);
     }
 }
