@@ -15,6 +15,7 @@ import com.engineerskasa.oasis.Model.User;
 public abstract class LeadWayDatabase extends RoomDatabase {
     public abstract UserDAO userDAO();
     public abstract PatientDAO patientDAO();
+    public abstract LabDAO labDAO();
 
     private static LeadWayDatabase instance;
 

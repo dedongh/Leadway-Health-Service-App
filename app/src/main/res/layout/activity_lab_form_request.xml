@@ -1,9 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.LabFormRequestActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:elevation="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/green_300"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="@color/white"
+            android:layout_marginBottom="15dp"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:scrollbars="none"
+            android:scrollingCache="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/blue_grey_200" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginRight="-4dp"
+                    android:inputType="textPersonName"
+                    android:maxLength="50"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:id="@+id/req_name"
+                    android:singleLine="true"
+                    android:textColor="@color/blue_grey_800"
+                    android:theme="@style/EditText.Green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Age"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/blue_grey_200" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginRight="-4dp"
+                    android:inputType="number"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:imeOptions="actionNext"
+                    android:id="@+id/req_age"
+                    android:singleLine="true"
+                    android:textColor="@color/blue_grey_800"
+                    android:theme="@style/EditText.Green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/blue_grey_200" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginRight="-4dp"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:imeOptions="actionNext"
+                    android:id="@+id/req_gender"
+                    android:singleLine="true"
+                    android:textColor="@color/blue_grey_800"
+                    android:theme="@style/EditText.Green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Doctor's Name"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/blue_grey_200" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginRight="-4dp"
+                    android:inputType="textPersonName"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:imeOptions="actionNext"
+                    android:id="@+id/req_doc"
+                    android:singleLine="true"
+                    android:textColor="@color/blue_grey_800"
+                    android:theme="@style/EditText.Green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/blue_grey_200" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginRight="-4dp"
+                    android:inputType="phone"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:imeOptions="actionNext"
+                    android:id="@+id/req_phone"
+                    android:singleLine="true"
+                    android:textColor="@color/blue_grey_800"
+                    android:theme="@style/EditText.Green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/blue_grey_200" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginRight="-4dp"
+                    android:inputType="textMultiLine"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
+                    android:id="@+id/req_desc"
+                    android:singleLine="true"
+                    android:textColor="@color/blue_grey_800"
+                    android:theme="@style/EditText.Green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="20dp" />
+
+                <Button
+                    android:id="@+id/btn_send_req"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginRight="-4dp"
+                    android:background="@drawable/btn_rounded_green_300"
+                    android:text="S E N D  R E Q U E S T"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

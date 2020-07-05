@@ -1,11 +1,11 @@
 package com.engineerskasa.oasis.Activity;
 
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import com.engineerskasa.oasis.R;
 import com.engineerskasa.oasis.Utility.Tools;
@@ -17,12 +17,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.BaseMultiplePermissionsListener;
-import com.karumi.dexter.listener.single.PermissionListener;
+
+import java.util.List;
 
 public class LocateUsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -43,22 +43,19 @@ public class LocateUsActivity extends FragmentActivity implements OnMapReadyCall
         setContentView(R.layout.activity_locate_us);
         Tools.setSystemBarColor(this, android.R.color.transparent);
         Tools.setSystemBarLight(this);
+
         Dexter.withContext(this)
-                .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                .withListener(new PermissionListener() {
+                .withPermissions(Manifest.permission.ACCESS_NETWORK_STATE,
+                        Manifest.permission.ACCESS_WIFI_STATE,Manifest.permission.ACCESS_FINE_LOCATION)
+                .withListener(new BaseMultiplePermissionsListener() {
                     @Override
-                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-
+                    public void onPermissionsChecked(MultiplePermissionsReport report) {
+                        super.onPermissionsChecked(report);
                     }
 
                     @Override
-                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-
-                    }
-
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                        super.onPermissionRationaleShouldBeShown(permissions, token);
                     }
                 }).check();
 

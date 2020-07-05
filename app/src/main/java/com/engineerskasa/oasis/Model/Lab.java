@@ -23,8 +23,10 @@ public class Lab {
 
     @ColumnInfo(name = "doctor")
     private String doctor;
+
     @ColumnInfo(name = "description")
     private String description;
+
     @ColumnInfo(name = "phone")
     private String phone;
 
